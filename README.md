@@ -12,6 +12,14 @@ pip3 install requests_toolbelt
 python3 l4jam.py targetlist.txt collab.net 
 
 ```
+## Updates  / features
+```bash
+1. loads the target lists
+2. added more RSPs like dns, rmi, etc
+3. added more waf bypass payloads.
+4. added more headers
+5. Prints out request and response of each target.
+```
 
 ## warning!!
 
