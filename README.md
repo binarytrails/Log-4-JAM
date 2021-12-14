@@ -8,6 +8,10 @@ pip3 install requests_toolbelt
 ```
 ## Usage  
 ```bash
-python3 l4jam.py http(s)://target collab.net
+# make sure target list has http/https prepended to it.
+python3 l4jam.py targetlist.txt collab.net 
+
 ```
+
+
 
