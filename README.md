@@ -13,5 +13,9 @@ python3 l4jam.py targetlist.txt collab.net
 
 ```
 
+## warning!!
+
+its all on you what you do with this script as this is meant for pentest/Red-Team and bugbounty stuff.
+other than that if you use it for malicious purpose like extortion and shit i am not responsible for the mess.
 
 
