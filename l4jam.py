@@ -122,7 +122,7 @@ for headerz in list:
                          verify=False, allow_redirects=True)
         data = dump.dump_all(rpost)
         print(data.decode('utf-8'))
-        rput = requests.put(url+"/?something="+str(ran), data = pay, headers=target_headerz, timeout=3,
+        rput = requests.put(url+"/lmao.txt", data = pay, headers=target_headerz, timeout=3,
                          verify=False, allow_redirects=True)
         data = dump.dump_all(rput)
         print(data.decode('utf-8'))
