@@ -56,7 +56,7 @@ list = [
     'X-Do-Not-Track',
     'X-Foo',
     'X-Foo-Bar',
-    'If-You-SEE-THIS-InYour-Log-cONTACT-dorkerdevil@protonmail.com'
+    'If-You-SEE-THIS-InYour-Log-cONTACT-dorkerdevil@protonmail.com',
     'X-Forwarded',
     'X-Forwarded-By',
     'X-Forwarded-For',
