@@ -1,6 +1,8 @@
 # Log-4-JAM - Log 4 Just Another Mess
 Log4j JNDI inj. vuln scanner
 
+## About -
+This is a reliable scanner if you are looking to test your applications that could be vulnerable to Log4J JNDI Injection Vulnerability.
 
 ## Requirements 
 ```bash
@@ -27,3 +29,4 @@ its all on you what you do with this script as this is meant for pentest/Red-Tea
 other than that if you use it for malicious purpose like extortion and shit i am not responsible for the mess.
 
 
+### !!! Feedback's are welcome !!!
