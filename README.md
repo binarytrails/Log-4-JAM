@@ -11,6 +11,7 @@ pip3 install requests_toolbelt
 ## Usage  
 ```bash
 # make sure target list has http/https prepended to it.
+# or grab list of endpoints from wayback and pass the list in the argument . 
 python3 l4jam.py targetlist.txt collab.net 
 
 ```
