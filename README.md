@@ -31,5 +31,5 @@ other than that if you use it for malicious purpose like extortion and shit i am
 
 
 ### !!! Feedback's are welcome !!!
-If you want to get your product tested if its vuln adn exploitable to log4j jndi injection 
+If you want to get your product tested if its vuln adn exploitable to log4j jndi injection .
 write me email - dorkerdevil_log4jmess@protonmail.com
