@@ -1,5 +1,5 @@
 # Log-4-JAM - Log 4 Just Another Mess
-Log4j JNDI inj. vuln scanner
+Log4j JNDI inj. vuln scanner - Public Relase
 
 ## About -
 This is a reliable scanner if you are looking to test your applications that could be vulnerable to Log4J JNDI Injection Vulnerability.
