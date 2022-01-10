@@ -14,6 +14,12 @@ pip3 install requests_toolbelt
 # or grab list of endpoints from wayback and pass the list in the argument . 
 python3 l4jam.py targetlist.txt collab.net 
 
+# test how it looks with localhost
+# terminal 1
+python3 -m http.server 8080
+# terminal 2
+python3 l4jam.py targets-local.txt example.somednswebsite.net
+
 ```
 ## Updates  / features
 ```bash
